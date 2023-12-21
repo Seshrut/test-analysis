@@ -1,33 +1,28 @@
-import keyboard
 try:
-    import telegram
-    from telegram import *
+    import keyboard
 except ModuleNotFoundError:
-    os.system('pip install python-telegram-bot --upgrade')
-import asyncio
-
+    os.system('pip install keyboard')
+    print('recommended to restart program')
 import os
 try:
     import matplotlib.pyplot as plt
 except ModuleNotFoundError:
     os.system('pip install matplotlib')
+    print('recommended to restart program')
 try:
     import pandas as pd
 except ModuleNotFoundError:
     os.system('pip install pandas')
+    print('recommended to restart program')
 try:
     import openpyxl
     from openpyxl import *
 except ModuleNotFoundError:
     os.system('pip install openpyxl')
+    print('recommended to restart program')
 import datetime
 from datetime import *
 import time
-
-loc = "D:\\Seshrut\\Error-505!!\\Tests\\"
-
-if loc == "":
-    loc = str(input("enter the file location where you want to save the result \n"))
 
 Y = "."
 A = str(input("Test number ->  "))
@@ -68,7 +63,7 @@ t_incorrect = 0
 t_unattempted = 0
 
 total_time_lapsed = 0
-os.mkdir("D:\\Seshrut\\Error-505!!\\Tests\\"+"test"+A) # to be modified
+os.mkdir("test"+A) # to be modified
 time.sleep(1)
 while Y != "end":
     X = datetime.now()
@@ -121,7 +116,7 @@ while Y != "end":
 
     test.append([Q,Y, H, M, S, time_lapsed])
     total_time_lapsed = time_lapsed + total_time_lapsed
-    wb.save("D:\\Seshrut\\Error-505!!\\Tests\\"+"test"+A+"\\"+"test"+A+".xlsx") # to be modified
+    wb.save("test"+A+"\\"+"test"+A+".xlsx") # to be modified
     time.sleep(0.3)
 t_total = t_correct + t_incorrect + t_unattempted
 # Calculate percentages
@@ -143,18 +138,18 @@ plt.figure(figsize=(8, 8))
 plt.pie([percent_correct, percent_incorrect, percent_unattempted], labels=label, autopct="%1.1f%%", startangle=90, colors=color)
 plt.title("Test Results Analysis")
 plt.axis("equal")  # Equal aspect ratio ensures a circular pie chart
-plt.savefig("D:\\Seshrut\\Error-505!!\\Tests\\"+"test"+A+"\\"+"test result"+A+".png") # to be modified
+plt.savefig("test"+A+"\\"+"test result"+A+".png") # to be modified
 
 plt.figure(figsize=(8, 8))
 plt.pie([percent_t_correct, percent_t_incorrect, percent_t_unattemted], labels=label_1, autopct="%1.1f%%", startangle=90, colors=color_1)
 plt.title("Test Time Analysis")
 plt.axis("equal")  # Equal aspect ratio ensures a circular pie chart
-plt.savefig("D:\\Seshrut\\Error-505!!\\Tests\\"+"test"+A+"\\"+"test time"+A+".png") # to be modified
+plt.savefig("test"+A+"\\"+"test time"+A+".png") # to be modified
 
 test["H3"].value = "End"
 test["I3"].value = H
 test["J3"].value = M
 test["K3"].value = S
 test["L2"].value = A
-wb.save("D:\\Seshrut\\Error-505!!\\Tests\\"+"test"+A+"\\"+"test"+A+".xlsx") # to be modified
-os.startfile("D:\\Seshrut\\Error-505!!\\Tests\\"+"test"+A) # to be modified
+wb.save("test"+A+"\\"+"test"+A+".xlsx") # to be modified
+os.startfile("test"+A) # to be modified
