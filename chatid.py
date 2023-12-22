@@ -1,23 +1,13 @@
-import asyncio
 import os
-
 try:
-    import telegram
-    from telegram import *
+    import requests
 except ModuleNotFoundError:
-    os.system('pip install python-telegram-bot --upgrade')
-    print('recommended to restart program')
-
-bot_token = str(input("\n \ninput telegram bot token again and copy your id \n"))
-
-async def main():
-    bot = telegram.Bot(bot_token)
-    async with bot:
-        updates = (await bot.get_updates())[0]
-        print(updates)
-
-if __name__ == '__main__':
-    asyncio.run(main())
+    os.system('pip install requests')
+def get_chat_id(TOKEN):
+    url = f"https://api.telegram.org/bot{TOKEN}/getUpdates"
+    a=(requests.get(url).json())['result'][0]['message']['from']['id']
+    return a
+b = input("paste bot token after messaging the bot\n")
 print()
-print()
-cht_id = str(input("copy and paste the chat id here \n"))
+print(get_chat_id(b))
+c = input("copy the chat id too and save it") # to give time to save to clipboard
